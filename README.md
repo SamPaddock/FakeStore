@@ -1,97 +1,108 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
 # Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+>**Note**: React Native App developed to meet test requirement
+## 1. Framework 
+React Native CLI
 
-## Step 1: Start Metro
+## 2. Third Party Packages used in the app:
+   a. styled-components (for styling components) <br />
+   b. axios (for networking)<br />
+   c. redux (for data management/storage)<br />
+   d. react-native-async-storage (for data storage)<br />
+   e. react-navigation, react-native-gesture-handler react-native-reanimated (for navigation)<br />
+   f. react-native-bootsplash (for custom splash screen)<br />
+   h. react-native-linear-gradient (for gradient style)<br />
+   i. react-native-svg (for icons)<br />
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 3. API:
+   Used FakeStoreAPI to simulate a shop experince and using the response to generate a category list.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 4. App Screens:
+   * Home Screen:<br />
+         * Shows marketing banner with dynamic texts and images<br />
+         * A search text field that upon submitting query, it navigates to Search Screen<br />
+         * List of Categories extracted from array of Products that navigates to Search Screen<br />
+         * List of products that are clickablke and navigates to Product Screen to display additional details<br />
+         * Array of Product is saved in storage and accessed when offline.<br />
+   * Search Screen:<br />
+         * If Screen is accessed by category, it displays products for that category and search only works of that category.<br />
+         * If Screen is accessed by search query, it displays results for that query.<br />
+         * Search query check both title and category<br />
+         * If search results is cleared, all products are displyed for query and all products for a category for category.<br />
+   * Product Screen:<br />
+         * Display all product provided by FakeStoreAPI<br />
+         * Display price in disabled "Add to Cart" button<br />
+         * When Offline, product is accessed from saved Array of Products.<br />
 
-```sh
-# Using npm
+## 5. Project Structure:
+   * src/ - App source code
+      * apis/ - api calls 
+      * assets/ - image, svg, and style assets 
+      * components/ - Reusable UI components 
+      * constant/ - api endpoints, string, and types
+      * helper/ - App helper files
+         * fucntions/ - api generic request function, generic function, and online status hook.
+         * navigation/ - navigation setup and screen params setup
+         * redux/ - store and slices to store data
+      * screens/ home, search, and product screens
+        
+
+# Running the App
+
+## 1. Clone Repo
+```bash
+git clone https://github.com/SamPaddock/FakeStore.git
+cd FakeStore
+```
+
+## 2. Install Dependencies
+```bash
+# using npm
+npm install
+```
+
+## 3. For iOS
+```bash
+# using npm
+npm cd ios
+pod install
+```
+
+## Step 2: Start your Application
+
+Run the following command to start:
+
+### Start Metro
+```bash
+# using npm
 npm start
-
-# OR using Yarn
-yarn start
+# if facing issues
+npm start -- --reset-cache
 ```
 
-## Step 2: Build and run your app
+### For Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
+# using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### For iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
+# using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
 
-Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
